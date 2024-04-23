@@ -67,9 +67,6 @@
     <Compile Include="UnitTestTraceAbility_backup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
