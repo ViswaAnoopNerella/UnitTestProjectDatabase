@@ -36,15 +36,16 @@ namespace UnitTestProjectDataBase
 		[TestMethod]
 		public void TestMethodStartLot()
 		{
-			var lotInfo = new DataTracking.Models.LotInfo();
-
-			lotInfo.Lot = "23510002A";// "23510001A";//"23330166A";
-			lotInfo.MachineID = "C0001";
-			lotInfo.Operator = "A1020444";//A1020353//A1020444
-			lotInfo.Order = "4148384";// "4148383";//"57805702";
-			lotInfo.Product = "PT-67890";// "PT-12345";// "80600600";
-			lotInfo.Quantity = 25;//20//200;
-			lotInfo.ShiftLeader = "H";
+			var lotInfo = new DataTracking.Models.LotInfo
+			{
+				Lot = "23510002A",// "23510001A";//"23330166A";
+				MachineID = "C0001",
+				Operator = "A1020444",//A1020353//A1020444
+				Order = "4148384",// "4148383";//"57805702";
+				Product = "PT-67890",// "PT-12345";// "80600600";
+				Quantity = 25,//20//200;
+				ShiftLeader = "H"
+			};
 
 			var result = TraceabilityOp.StartLot(lotInfo);
 			if (!result.Success)
@@ -57,13 +58,14 @@ namespace UnitTestProjectDataBase
 
 			}
 			else
+			{
 				foreach (var properties in lotInfo.GetType().GetProperties())
 				{
 					object tmp = properties.GetValue(lotInfo);
 					if (tmp != null)
 						Console.WriteLine(properties.Name + " " + tmp.ToString());
 				}
-
+			}
 			//on success read lotInfo.LotIdent and lotInfo.Quantity
 
 			Assert.AreEqual(result.Success, true);
@@ -282,12 +284,13 @@ namespace UnitTestProjectDataBase
 		public void TestMethodAddScrapComponentByReason()
 		{
 
-			var componentInfo = new DataTracking.Models.ComponentInfo();
-
-			componentInfo.Ident = 1;//21301605
-			componentInfo.Item = "80600612";//52000456
-			componentInfo.Seria = "23330166A";//16140049M
-			componentInfo.Quan = 1;//5000
+			var componentInfo = new DataTracking.Models.ComponentInfo
+			{
+				Ident = 1,//21301605
+				Item = "80600612",//52000456
+				Seria = "23330166A",//16140049M
+				Quan = 1//5000
+			};
 
 			var lotInfo = new DataTracking.Models.LotInfo();
 
