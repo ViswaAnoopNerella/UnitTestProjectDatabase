@@ -250,8 +250,6 @@ namespace UnitTestProjectDataBase
 			Assert.AreEqual(result.Success, true);
 		}
 
-
-
 		[TestMethod]
 		public void TestMethodEndLotComponent()
 		{
@@ -657,6 +655,8 @@ namespace UnitTestProjectDataBase
 			lotInfo.LotIdent = 1;//23054860
 
 			var result = TraceabilityOp.AddMachineResult(lotInfo, "OK+22+5+NEST1", "InsulationTest+RoomTempRef+RoomTempSensor+Measurements+Station+Verification+DateTime+Result");
+			//"StationName+InsulationTest+RoomTempRef+RoomTempSensor+Measurements+Station+Verification+DateTime+Result"
+			//"Station1+OK+22+5+NEST1"
 
 			if (!result.Success)
 			{
@@ -1485,9 +1485,10 @@ namespace UnitTestProjectDataBase
 		[TestMethod]
 		public void TestMethodGetMachineSettingsByProductAndMachineID()
 		{
-			string machineID = "M7706";
-			string product = "80600612";//80600612//52002462
-			var result = TraceabilityOp.GetMachineSettingsByProductAndMachineID(machineID, product, "ProductLength+Tolerance");
+			string machineID = "C0001";// "M7706";
+			string product = "PT-67890";// "80600612";//80600612//52002462
+			string variableNames = "UpperStaticCoreModel+WeldPlateModel+WeldProfile+LaserMarkingParams+LaserPowerMax+LaserPowerMin+ReturnSpringModel+PlungerModel+ShaftModel+ShaftHeightMax+ShaftHeightMin+Orbital_ProgNr+Orbital_NA+Orbital_NATolMinus+Orbital_NATolPlus+Orbital_S+Orbital_STolMinus+Orbital_STolPlus+Orbital_T+Orbital_TTolMinus+Orbital_TTolPlus+Orbital_F+Orbital_FTolMinus+Orbital_FTolPlus+Orbital_E_H+Orbital_E_HTolMinus+Orbital_E_HTolPlus+Orbital_U+Orbital_UTolMinus+Orbital_UTolPlus+Orbital_B+Orbital_BTolMinus+Orbital_BTolPlus+Orbital_SollTasterOffset+ArcShieldModel+ContactSpringModel+AntiLevYokeModel+MoveableContactModel+Inspection_WeldplateHeightMax+Inspection_WeldplateHeightMin+  Inspection_ArcshieldMax+Inspection_ArcshieldMin+Inspection_YokeHeightMax+Inspection_YokeHeightMin+Inspection_MovContactHeightMax+Inspection_MovContactHeightMin+Inspection_MovContactAngle";
+			var result = TraceabilityOp.GetMachineSettingsByProductAndMachineID(machineID, product, variableNames);//"ProductLength+Tolerance"
 
 			if (!result.Success)
 			{
@@ -1508,8 +1509,8 @@ namespace UnitTestProjectDataBase
 		[TestMethod]
 		public void TestMethodGetMachineSettingsByProductAndMachineIDWithFields()
 		{
-			string machineID = "M7565";
-			string product = "50630900";
+			string machineID = "C0001";// "M7565";
+			string product = "PT-67890";// "50630900";
 			var result = TraceabilityOp.GetMachineSettingsByProductAndMachineIDWithFields(machineID, product);//"ProductType+ChipNest+CrimpTool+CylinderPressure+ChipDistance+ToleranceMinus+TolerancePlus"
 
 			if (!result.Success)
